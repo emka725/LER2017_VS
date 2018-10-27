@@ -1,7 +1,6 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 import frc.robot.XboxController;
 import frc.robot.subsystems.Pivot;
 
@@ -32,7 +31,7 @@ public class PivotCommand extends Command{
     		output = 0;
     	}
     	else {
-    		output = - diff * Robot.pivot.kP;
+    		output = - diff *Pivot.kP;
     	}
     	if (SmartDashboard.getBoolean("Use Xbox Joystick for Pivot Control",true)) {
     		Robot.pivot.setSpeed(Robot.oi.xbox.getRawAxis(XboxController.XBOX_LEFT_Y));

@@ -69,6 +69,7 @@ public class AlignGearVision extends Command {
 		double[] defaultValue=new double[0];
 		int counter = 0;
     	try {
+			//TODO: Mr Wood: change this to new network table implementation as in Shooterless branch
     		contours_report = NetworkTable.getTable("GRIP");
         	
         	x_grip_return = contours_report.getNumberArray("centerX", defaultValue);

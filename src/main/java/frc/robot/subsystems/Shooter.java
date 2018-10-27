@@ -1,14 +1,8 @@
 package frc.robot.subsystems;
 
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-import frc.robot.XboxController;
 import frc.robot.commands.ShooterCommand;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter extends Subsystem{
 
@@ -54,10 +48,11 @@ public class Shooter extends Subsystem{
 		//Don't change agitator speed - agitator default command will take over and close both
 	}
 	
-	private boolean isLeftShooterUpToSpeed() {
+	public boolean isLeftShooterUpToSpeed() {
 		return true;//RobotMap.shooter_left_motor.getSpeed()>RobotMap.shooter_left_motor.getSetpoint()*0.99;
 	}
-	private boolean isRightShooterUpToSpeed() {
+	
+	public boolean isRightShooterUpToSpeed() {
 		return true;//RobotMap.shooter_right_motor.getSpeed()>RobotMap.shooter_right_motor.getSetpoint()*0.99;
 	}
 	

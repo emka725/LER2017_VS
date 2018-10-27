@@ -58,6 +58,7 @@ public class AlignToGoal extends Command {
     
     protected void getGripData() {
     	try {
+			//TODO: Mr Wood: change this to new network table implementation as in Shooterless branch
     		double[] defaultValue=new double[0];
     		contours_report = NetworkTable.getTable("GRIP");
     		

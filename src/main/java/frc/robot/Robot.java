@@ -10,7 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -72,7 +71,8 @@ public class Robot extends TimedRobot {
   }
 	
 	public void initSmartdashboard() {
-		NetworkTable.globalDeleteAll();
+  	//TODO: Mr Wood: change this to new network table implementation as in Shooterless branch
+    NetworkTable.globalDeleteAll();
 		SmartDashboard.putBoolean("Use Xbox Joystick for Pivot Control", false);
 		SmartDashboard.putBoolean("Use Xbox Joysticks for Ramp Control", false);
 		SmartDashboard.putBoolean("Baseline Autonomous", false);
@@ -200,6 +200,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-		LiveWindow.run();
+		//LiveWindow.run(); // No longer required
   }
 }
