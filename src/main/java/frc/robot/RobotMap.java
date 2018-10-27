@@ -35,12 +35,6 @@ public class RobotMap {
 	private static final int INTAKE_ROLLER_INT = 7;
 	private static final int ELEVATOR_FORWARD_INT = 10;
 	private static final int ELEVATOR_BACKWARDS_INT = 9;
-	//private static final int SHOOTER_LEFT_INT = 8;
-	//private static final int SHOOTER_RIGHT_INT = 11;
-	//private static final int RAMP_MOTOR_LEFT_INT = 12;
-	//private static final int RAMP_MOTOR_RIGHT_INT = 13;
-	//private static final int AGITATOR_MOTOR_1_INT = 14;
-	//private static final int AGITATOR_MOTOR_2_INT = 15;
 	
 	private static final int PIVOT_POTENTIOMETER_INT = 3;
 //	private static final int DIST_SENSOR_POTENTIOMETER_INT = 2;
@@ -87,13 +81,7 @@ public class RobotMap {
 	public static TalonSRX intake_roller_motor;
 	public static TalonSRX elevator_forward_motor;
 	public static TalonSRX elevator_backwards_motor;
-	//public static TalonSRX shooter_left_motor;
-	//public static TalonSRX shooter_right_motor;
-	//public static TalonSRX ramp_motor_left;
-	//public static TalonSRX ramp_motor_right;
-	//public static TalonSRX agitator_motor_1;
-	//public static TalonSRX agitator_motor_2;
-	
+
 	public static ADXRS450_Gyro gyro;
 
 	public static void init() {
@@ -125,57 +113,12 @@ public class RobotMap {
     	intake_roller_motor = new TalonSRX(INTAKE_ROLLER_INT);
     	elevator_forward_motor = new TalonSRX(ELEVATOR_FORWARD_INT);
     	elevator_backwards_motor = new TalonSRX(ELEVATOR_BACKWARDS_INT);
-    	//shooter_left_motor = new TalonSRX(SHOOTER_LEFT_INT);
-    	//shooter_right_motor = new TalonSRX(SHOOTER_RIGHT_INT);
-    	//ramp_motor_left = new TalonSRX(RAMP_MOTOR_LEFT_INT);
-    	//ramp_motor_right = new TalonSRX(RAMP_MOTOR_RIGHT_INT);
-    	//agitator_motor_1 = new TalonSRX(AGITATOR_MOTOR_1_INT);
-    	//agitator_motor_2 = new TalonSRX(AGITATOR_MOTOR_2_INT);
     	
     	gyro = new ADXRS450_Gyro();
     	
 		left_motor_2.follow(left_motor_1);
 		right_motor_2.follow(right_motor_1);
 		
-		//shooter_left_motor.reverseOutput(false);
-		//shooter_left_motor.reverseSensor(true);
-		//shooter_left_motor.setFeedbackDevice(FeedbackDevice.QuadEncoder);
-		//shooter_left_motor.configEncoderCodesPerRev(80);		
-
-		//shooter_left_motor.changeControlMode(TalonControlMode.Speed);
-		//shooter_left_motor.clearIAccum();
-		//shooter_left_motor.configNominalOutputVoltage(0.0f, -0.0f); //could try 1 or 2 volts
-		//shooter_left_motor.configPeakOutputVoltage(12.0F, -12.0F);
-		//shooter_left_motor.setEncPosition(0);
-		//shooter_left_motor.set(0);
-		//shooter_left_motor.setProfile(0);
-		////shooter_left_motor.setPID(2.25, 0.035, 0.0, 3.46, 20, 0.0, 0); // P, I, D, F, IZONE, 0,0
-		//shooter_left_motor.setPID(2.5, 0.012, 0.0, 2.25, 150, 0.0, 0);
-		
-		//// Start with just F, then add P, then D=10P if its too fast, and/or I=P/100 to correct steady state error
-	
-		////shooter_left_motor.changeControlMode(TalonSRX.TalonControlMode.PercentVbus);
-		////shooter_left_motor.set(0);
-
-		
-		//shooter_right_motor.reverseOutput(false);
-		//shooter_right_motor.reverseSensor(true);
-		//shooter_right_motor.setFeedbackDevice(TalonSRX.FeedbackDevice.QuadEncoder);
-		//shooter_right_motor.configEncoderCodesPerRev(80);
-		
-		//shooter_right_motor.changeControlMode(TalonSRX.TalonControlMode.Speed);
-		//shooter_right_motor.clearIAccum();
-		//shooter_right_motor.configNominalOutputVoltage(0.0f, -0.0f); //could try 1 or 2 volts
-		//shooter_right_motor.configPeakOutputVoltage(12.0F, -12.0F);
-		//shooter_right_motor.setEncPosition(0);
-		//shooter_right_motor.set(0);
-		//shooter_right_motor.setProfile(0);
-		//shooter_right_motor.setPID(2.5, 0.012, 0.0, 2.25, 100, 0.0, 0);
-		//// Start with just F, then add P, then D=10P if its too fast, and/or I=P/100 to correct steady state error
-		
-		////shooter_right_motor.changeControlMode(TalonSRX.TalonControlMode.PercentVbus);
-		////shooter_right_motor.set(0);
-
 		try {
 			UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 			camera.setResolution(320, 340);

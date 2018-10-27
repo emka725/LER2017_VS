@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.subsystems.Ramp;
+import frc.robot.subsystems.Pivot;
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 /**
@@ -19,8 +19,7 @@ public class ResetRobot extends InstantCommand {
     protected void initialize() {
     	Robot.drivetrain.stop();
     	Robot.gyro.resetAngle();
-    	Robot.pivot.setPosition(Robot.pivot.DISABLED);
-    	Robot.ramp.setBothPosition(Ramp.RampPosition.DISABLED);
+    	Robot.pivot.setPosition(Pivot.DISABLED);
     }
 
 }

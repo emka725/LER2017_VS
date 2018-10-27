@@ -1,11 +1,7 @@
 package frc.robot.commands;
 
-import frc.robot.Logging;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *

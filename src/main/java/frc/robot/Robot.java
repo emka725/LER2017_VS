@@ -10,22 +10,17 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AutonomousCommand;
 import frc.robot.commands.ResetRobot;
-import frc.robot.subsystems.Agitator;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Elevator;
 import frc.robot.subsystems.GearIntake;
 import frc.robot.subsystems.Glow;
 import frc.robot.subsystems.Gyro;
 import frc.robot.subsystems.Pivot;
-import frc.robot.subsystems.Ramp;
-import frc.robot.subsystems.Roller;
-import frc.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -39,11 +34,7 @@ public class Robot extends TimedRobot {
 	public static final Gyro gyro = new Gyro();
 	public static final Pivot pivot = new Pivot();
 	public static final GearIntake gearIntake = new GearIntake();
-	public static final Roller roller = new Roller();
 	public static final Elevator elevator = new Elevator();
-	public static final Shooter shooter = new Shooter();
-	public static final Ramp ramp = new Ramp();
-	public static final Agitator agitator = new Agitator();
 	public static final Glow glow = new Glow();
 	public static OI oi;
 	
@@ -72,7 +63,7 @@ public class Robot extends TimedRobot {
   }
 	
 	public void initSmartdashboard() {
-		NetworkTable.globalDeleteAll();
+    NetworkTable.globalDeleteAll(); // Deprecated
 		SmartDashboard.putBoolean("Use Xbox Joystick for Pivot Control", false);
 		SmartDashboard.putBoolean("Use Xbox Joysticks for Ramp Control", false);
 		SmartDashboard.putBoolean("Baseline Autonomous", false);
@@ -145,8 +136,6 @@ public class Robot extends TimedRobot {
 
 	private void updateSmartDashboard() {
 		SmartDashboard.putNumber("Pivot Voltage", RobotMap.pivot_potentiometer.getVoltage());
-		SmartDashboard.putNumber("Left Encoder", shooter.getLeftVelocity());
-		SmartDashboard.putNumber("Right Encoder", shooter.getRightVelocity());
 		SmartDashboard.putNumber("Left Drivetrain", drivetrain.getLeftSpeed());
 		SmartDashboard.putNumber("Right Drivetrain", drivetrain.getRightSpeed());
 		SmartDashboard.putBoolean("Gear Switch", RobotMap.gear_switch.get());
@@ -200,6 +189,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-		LiveWindow.run();
+		//LiveWindow.run(); // not needed ... called automatically
   }
 }

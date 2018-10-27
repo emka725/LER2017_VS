@@ -11,7 +11,6 @@ import frc.robot.commands.ChangeGlowColour;
 import frc.robot.commands.ChangeGlowMode;
 import frc.robot.commands.IntakeGears;
 import frc.robot.commands.OuttakeGears;
-import frc.robot.commands.RollIntake;
 import frc.robot.commands.SwitchPivotPositionCommand;
 import frc.robot.subsystems.Glow;
 import frc.robot.subsystems.Pivot;
@@ -83,6 +82,5 @@ public class OI {
 
     gear_intake_pull_button.whileHeld(new IntakeGears());
     gear_intake_push_button.whileHeld(new OuttakeGears());
-    roller_intake_button.whileHeld(new RollIntake());
   }
 }

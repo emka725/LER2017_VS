@@ -1,15 +1,12 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 import frc.robot.XboxController;
-import frc.robot.subsystems.Pivot;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PivotCommand extends Command{
-
 	
 	public PivotCommand() {
 		requires(Robot.pivot);
@@ -19,6 +16,7 @@ public class PivotCommand extends Command{
 	protected boolean isFinished() {
 		return false;
 	}
+
 	protected void initialize() {
 	}
 
@@ -40,7 +38,5 @@ public class PivotCommand extends Command{
     	else {
     		Robot.pivot.setSpeed(output);
     	}
-    	
 	}
-
 }
