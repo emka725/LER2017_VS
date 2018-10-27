@@ -1,8 +1,10 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
+import edu.wpi.first.networktables.EntryListenerFlags;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 
 /**
  *
@@ -10,39 +12,39 @@ import edu.wpi.first.wpilibj.networktables.NetworkTable;
 public class AlignGearVision extends Command {
 	
 	private double x_mean;
-	private double y_mean;
+	protected double y_mean;
 	private double area_mean;
 	
 	private double x_grip_return[];
 	private double y_grip_return[];
-	private double area_grip_return[];
+	//private double area_grip_return[];
 	
 	private double contours_found;
 	
 	private final double X_1_TARGET = 150;
-	private final double Y_1_TARGET = 155;
+	//private final double Y_1_TARGET = 155;
 	private final double AREA_1_TARGET = 0;
 	
 	private final double X_2_TARGET = 170;
-	private final double Y_2_TARGET = 155;
+	//private final double Y_2_TARGET = 155;
 	private final double AREA_2_TARGET = 0;
 	
 	private final double X_TARGET_MEAN = (X_1_TARGET + X_2_TARGET) / 2;
-	private final double Y_TARGET_MEAN = (Y_1_TARGET + Y_2_TARGET) / 2;
+	//private final double Y_TARGET_MEAN = (Y_1_TARGET + Y_2_TARGET) / 2;
 	private final double AREA_TARGET_MEAN = (AREA_1_TARGET + AREA_2_TARGET) / 2;
 	
 	private final double MAX_SPEED = 0.23;
-	private final double X_MULTIPLIER = 0.01;
-	private final double Y_MULTIPLIER = 0.01;
+	//private final double X_MULTIPLIER = 0.01;
+	//private final double Y_MULTIPLIER = 0.01;
 	private final double AREA_MULTIPLIER = 0.01;
 	
 	private final double X_DEADBAND = 73;
-	private final double Y_DEADBAND = 10;
+	//private final double Y_DEADBAND = 10;
 	private final double AREA_DEADBAND = 10;
 	
 	private final double Y_THRESHOLD = 150;
 	
-	NetworkTable contours_report;
+	//NetworkTable contours_report;
 	
 	private double l_output;
 	private double r_output;
@@ -63,16 +65,24 @@ public class AlignGearVision extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	current_stage = Stage.ALIGN;
+
+		// Set up Network Table listener to retrieve changes in centerx and centery:
+		NetworkTableInstance NTInstance = NetworkTableInstance.getDefault();
+		NetworkTable networkTable = NTInstance.getTable("GRIP");
+		//NetworkTableEntry centerXEntry = table.getEntry("centerx");
+		NTInstance.startClientTeam(2708);
+		networkTable.addEntryListener("centerX", (table, key, entry, value, flags) -> {x_grip_return=value.getDoubleArray();}, EntryListenerFlags.kNew|EntryListenerFlags.kUpdate);
+		networkTable.addEntryListener("centerY", (table, key, entry, value, flags) -> {y_grip_return=value.getDoubleArray();}, EntryListenerFlags.kNew|EntryListenerFlags.kUpdate);
     }
     
     protected void getGripData() {
-		double[] defaultValue=new double[0];
+		//double[] defaultValue=new double[0];
 		int counter = 0;
     	try {
-    		contours_report = NetworkTable.getTable("GRIP");
-        	
-        	x_grip_return = contours_report.getNumberArray("centerX", defaultValue);
-        	y_grip_return = contours_report.getNumberArray("centerY", defaultValue);
+			//These are not needed because the Network Table listeners above automatically update the variables:
+    		//contours_report = NetworkTable.getTable("GRIP");
+        	//x_grip_return = contours_report.getNumberArray("centerX", defaultValue);
+        	//y_grip_return = contours_report.getNumberArray("centerY", defaultValue);
         	
         	contours_found = x_grip_return.length;
         	grip_successful = contours_found > 0;
@@ -141,7 +151,9 @@ public class AlignGearVision extends Command {
 		    		break;
 		    	case DISTANCE:
 		    		distance();
-		    		break;
+					break;
+				default:
+					break;
 	    	}
 	    	if (Math.abs(l_output) > MAX_SPEED) {
 	    		if (l_output < 0) {

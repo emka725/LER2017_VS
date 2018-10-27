@@ -7,10 +7,10 @@
 
 package frc.robot;
 
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AutonomousCommand;
@@ -63,7 +63,9 @@ public class Robot extends TimedRobot {
   }
 	
 	public void initSmartdashboard() {
-    NetworkTable.globalDeleteAll(); // Deprecated
+    //NetworkTable.globalDeleteAll(); // Deprecated
+    NetworkTableInstance.getDefault().deleteAllEntries();
+
 		SmartDashboard.putBoolean("Use Xbox Joystick for Pivot Control", false);
 		SmartDashboard.putBoolean("Use Xbox Joysticks for Ramp Control", false);
 		SmartDashboard.putBoolean("Baseline Autonomous", false);
