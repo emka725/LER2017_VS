@@ -69,7 +69,6 @@ public class AlignGearVision extends Command {
 		// Set up Network Table listener to retrieve changes in centerx and centery:
 		NetworkTableInstance NTInstance = NetworkTableInstance.getDefault();
 		NetworkTable networkTable = NTInstance.getTable("GRIP");
-		//NetworkTableEntry centerXEntry = table.getEntry("centerx");
 		NTInstance.startClientTeam(2708);
 		networkTable.addEntryListener("centerX", (table, key, entry, value, flags) -> {x_grip_return=value.getDoubleArray();}, EntryListenerFlags.kNew|EntryListenerFlags.kUpdate);
 		networkTable.addEntryListener("centerY", (table, key, entry, value, flags) -> {y_grip_return=value.getDoubleArray();}, EntryListenerFlags.kNew|EntryListenerFlags.kUpdate);

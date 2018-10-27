@@ -1,9 +1,10 @@
 package frc.robot.commands;
 
 import frc.robot.Robot;
-
+import edu.wpi.first.networktables.EntryListenerFlags;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -53,16 +54,21 @@ public class AlignToGoal extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+		// Set up Network Table listener to retrieve changes in centerx and centery:
+		NetworkTableInstance NTInstance = NetworkTableInstance.getDefault();
+		NetworkTable networkTable = NTInstance.getTable("GRIP");
+		NTInstance.startClientTeam(2708);
+		networkTable.addEntryListener("centerX", (table, key, entry, value, flags) -> {x_grip_return=value.getDoubleArray();}, EntryListenerFlags.kNew|EntryListenerFlags.kUpdate);
+		networkTable.addEntryListener("centerY", (table, key, entry, value, flags) -> {y_grip_return=value.getDoubleArray();}, EntryListenerFlags.kNew|EntryListenerFlags.kUpdate);
     }
     
     protected void getGripData() {
     	try {
-    		double[] defaultValue=new double[0];
-    		contours_report = NetworkTable.getTable("GRIP");
-    		
-    		x_grip_return = contours_report.getNumberArray("centerX", defaultValue);
-        	y_grip_return = contours_report.getNumberArray("centerY", defaultValue);
+			//double[] defaultValue=new double[0];
+			//These are not needed because the Network Table listeners above automatically update the variables:
+    		//contours_report = NetworkTable.getTable("GRIP");
+    		//x_grip_return = contours_report.getNumberArray("centerX", defaultValue);
+        	//y_grip_return = contours_report.getNumberArray("centerY", defaultValue);
         	
         	contours_found = x_grip_return.length;
         	
@@ -134,7 +140,9 @@ public class AlignToGoal extends Command {
 	    		break;
 	    	case RE_ALIGN:
 	    		align();
-	    		break;
+				break;
+			default:
+				break;
 	    	}
 	    	
 	    	if (Math.abs(l_output) > MAX_SPEED) {
