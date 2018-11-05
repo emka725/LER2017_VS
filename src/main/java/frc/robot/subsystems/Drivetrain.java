@@ -25,8 +25,9 @@ public class Drivetrain extends Subsystem {
 		this.left_speed = left_speed;
 		this.right_speed = right_speed;
 		
-		RobotMap.left_motor_1.set(ControlMode.Velocity, this.left_speed);
-		RobotMap.right_motor_1.set(ControlMode.Velocity, -this.right_speed);
+		//|TODO: change control mode back to Velocity???? Need feedback
+		RobotMap.left_motor_1.set(ControlMode.PercentOutput, this.left_speed);
+		RobotMap.right_motor_1.set(ControlMode.PercentOutput, -this.right_speed);
 	}
 	
 	public void setSpeedWithGyro(double left_speed, double right_speed) {

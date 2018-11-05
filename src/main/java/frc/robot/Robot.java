@@ -140,12 +140,12 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Pivot Voltage", RobotMap.pivot_potentiometer.getVoltage());
 		SmartDashboard.putNumber("Left Drivetrain", drivetrain.getLeftSpeed());
 		SmartDashboard.putNumber("Right Drivetrain", drivetrain.getRightSpeed());
-		SmartDashboard.putBoolean("Gear Switch", RobotMap.gear_switch.get());
-		SmartDashboard.putBoolean("Gear Pocket Switch", RobotMap.gear_pocket_switch.get());
-		SmartDashboard.putBoolean("Left Ramp Switch 1", RobotMap.left_ramp_switch_1.get());
-		SmartDashboard.putBoolean("Left Ramp Switch 2", RobotMap.left_ramp_switch_2.get());
-		SmartDashboard.putBoolean("Right Ramp Switch 1", RobotMap.right_ramp_switch_1.get());
-		SmartDashboard.putBoolean("Right Ramp Switch 2", RobotMap.right_ramp_switch_2.get());
+		SmartDashboard.putBoolean("Gear Switch", !RobotMap.gear_switch.get());
+		SmartDashboard.putBoolean("Gear Pocket Switch", !RobotMap.gear_pocket_switch.get());
+		//SmartDashboard.putBoolean("Left Ramp Switch 1", RobotMap.left_ramp_switch_1.get());
+		//SmartDashboard.putBoolean("Left Ramp Switch 2", RobotMap.left_ramp_switch_2.get());
+		//SmartDashboard.putBoolean("Right Ramp Switch 1", RobotMap.right_ramp_switch_1.get());
+		//SmartDashboard.putBoolean("Right Ramp Switch 2", RobotMap.right_ramp_switch_2.get());
 		
   }
   

@@ -18,8 +18,8 @@ public class Elevator extends Subsystem{
 		setDefaultCommand(new ElevatorCommand());
 	}
 	public void setSpeed(double speed) {
-		RobotMap.elevator_forward_motor.set(ControlMode.Velocity, speed);
-		RobotMap.elevator_backwards_motor.set(ControlMode.Velocity, -speed);
+		RobotMap.elevator_forward_motor.set(ControlMode.PercentOutput, speed);
+		RobotMap.elevator_backwards_motor.set(ControlMode.PercentOutput, -speed);
 	}
 	
 	public void elevate() {

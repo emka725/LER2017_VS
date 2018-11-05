@@ -15,15 +15,15 @@ public class GearIntake extends Subsystem {
     }
     
     public void intake(){
-    	RobotMap.gear_intake_motor.set(ControlMode.Velocity, -SPEED);
+    	RobotMap.gear_intake_motor.set(ControlMode.PercentOutput, -SPEED);
     }
     
     public void stop() {
-    	RobotMap.gear_intake_motor.set(ControlMode.Velocity, 0);
+    	RobotMap.gear_intake_motor.set(ControlMode.PercentOutput, 0);
     }
     
     public void outtake() {
-    	RobotMap.gear_intake_motor.set(ControlMode.Velocity, SPEED);
+    	RobotMap.gear_intake_motor.set(ControlMode.PercentOutput, SPEED);
     }
 }
 
