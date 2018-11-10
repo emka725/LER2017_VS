@@ -43,8 +43,6 @@ public class OI {
   private final int ELEVATOR_BUTTON_INT = XboxController.XBOX_START;
   private final int RELEASE_ELEVATOR_BUTTON_INT = XboxController.XBOX_BACK;
 
-  //private final int ROLLER_INTAKE_BUTTON_INT = XboxController.XBOX_LB;
-
   public Joystick l_joystick = new Joystick(L_JOYSTICK_INT);
   public Joystick r_joystick = new Joystick(R_JOYSTICK_INT);
 
@@ -58,7 +56,6 @@ public class OI {
 
   public JoystickButton gear_intake_pull_button = new JoystickButton(xbox, GEAR_INTAKE_PULL_BUTTON_INT);
   public JoystickButton gear_intake_push_button = new JoystickButton(xbox, GEAR_INTAKE_PUSH_BUTTON_INT);
-  //public JoystickButton roller_intake_button = new JoystickButton(xbox, ROLLER_INTAKE_BUTTON_INT);
 
   public JoystickButton pivot_down_button = new JoystickButton(xbox, PIVOT_DOWN_BUTTON_INT);
   public JoystickButton pivot_up_button = new JoystickButton(xbox, PIVOT_UP_BUTTON_INT);
@@ -74,7 +71,6 @@ public class OI {
 
     align_gear_button.whileHeld(new AlignGearVision());
 
-    //flash_blue_button.whenPressed(new ChangeGlowMode(Glow.Mode.NORMAL));
     flash_blue_button.whenPressed(new ChangeGlowColour(Glow.Colour.BLUE));
     flash_blue_button.whenReleased(new ChangeGlowMode(Glow.Mode.GEAR_ALERT));
 

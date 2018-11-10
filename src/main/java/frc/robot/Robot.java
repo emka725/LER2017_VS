@@ -58,16 +58,13 @@ public class Robot extends TimedRobot {
 		reset_robot.start();
     initSmartdashboard();
     m_chooser.addDefault("Default Auto", new AutonomousCommand());
-    // chooser.addObject("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
 	
 	public void initSmartdashboard() {
-    //NetworkTable.globalDeleteAll(); // Deprecated
     NetworkTableInstance.getDefault().deleteAllEntries();
 
 		SmartDashboard.putBoolean("Use Xbox Joystick for Pivot Control", false);
-		SmartDashboard.putBoolean("Use Xbox Joysticks for Ramp Control", false);
 		SmartDashboard.putBoolean("Baseline Autonomous", false);
 		SmartDashboard.putBoolean("Gear Autonomous", false);
 		SmartDashboard.putBoolean("Left Gear Autonomous", false);
@@ -118,15 +115,6 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    //autonomousCommand = m_chooser.getSelected();
-		
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
 		// schedule the autonomous command:
 		autonomousCommand = new AutonomousCommand();
 		autonomous_running = true;
@@ -142,11 +130,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Right Drivetrain", drivetrain.getRightSpeed());
 		SmartDashboard.putBoolean("Gear Switch", !RobotMap.gear_switch.get());
 		SmartDashboard.putBoolean("Gear Pocket Switch", !RobotMap.gear_pocket_switch.get());
-		//SmartDashboard.putBoolean("Left Ramp Switch 1", RobotMap.left_ramp_switch_1.get());
-		//SmartDashboard.putBoolean("Left Ramp Switch 2", RobotMap.left_ramp_switch_2.get());
-		//SmartDashboard.putBoolean("Right Ramp Switch 1", RobotMap.right_ramp_switch_1.get());
-		//SmartDashboard.putBoolean("Right Ramp Switch 2", RobotMap.right_ramp_switch_2.get());
-		
   }
   
   /**
@@ -191,6 +174,5 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void testPeriodic() {
-		//LiveWindow.run(); // not needed ... called automatically
   }
 }
