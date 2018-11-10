@@ -15,19 +15,6 @@ public class Gyro extends Subsystem {
 	private final double FORWARD_THRESHOLD = 80;
 	private final double MAX_ARCADE_SPEED = 0.6;
 	
-	//XXX Why are these class-wide variables?
-	private double l_gyro_out;
-	private double r_gyro_out;
-	
-	private double current_angle;
-	private double joystick_angle;
-	private double joystick_speed;
-	private double total_speed;
-	
-	private boolean cw_faster;
-	private double closest_difference;
-	
-
     public void initDefaultCommand() {
     }
     
@@ -44,7 +31,12 @@ public class Gyro extends Subsystem {
     }
     
     public double[] getStraightGyroOutput(double left, double right) {
-    	l_gyro_out = left;
+		double l_gyro_out;
+		double r_gyro_out;
+		double current_angle;
+		double total_speed;
+
+		l_gyro_out = left;
     	r_gyro_out = right;
     	total_speed = Math.abs(left) + Math.abs(right) + 1;
     	
@@ -65,6 +57,14 @@ public class Gyro extends Subsystem {
     }
     
     public double[] getArcadeGyroOutput(double x, double y) {
+		double current_angle;
+		double joystick_angle;
+		double joystick_speed;
+		double l_gyro_out;
+		double r_gyro_out;
+		boolean cw_faster;
+		double closest_difference;
+	
     	if (x == 0D && y == 0D) {
     		double[] output_array = {0D, 0D};
         	return output_array;

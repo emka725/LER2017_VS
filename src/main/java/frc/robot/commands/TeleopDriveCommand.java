@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class TeleopDriveCommand extends Command {
-	//XXX Why are these class-wide variables?
 	private double l_joystick_input;
 	private double r_joystick_x_input;
 	private double r_joystick_y_input;
