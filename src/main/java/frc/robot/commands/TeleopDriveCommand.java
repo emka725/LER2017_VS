@@ -88,7 +88,9 @@ public class TeleopDriveCommand extends Command {
 	
 	protected void sendToDrivetrain() {
 		if (!Robot.autonomous_running) {
-			Robot.drivetrain.setSpeed(l_output, r_output);
+			double left = l_output * Robot.speedLimitFactor;
+			double right = r_output * Robot.speedLimitFactor;
+			Robot.drivetrain.setSpeed(left, right);
 		}
 	}
 	

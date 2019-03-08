@@ -48,9 +48,10 @@ public class Robot extends TimedRobot {
 	
 	public static boolean autonomous_running = false;
 
+  public static double speedLimitFactor = 0.4;
+
   ResetRobot reset_robot = new ResetRobot();
 	public Command autonomousCommand = new AutonomousCommand();
-
 
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -93,6 +94,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 		updateSmartDashboard();
+    SmartDashboard.putNumber("Speed Limit Factor", speedLimitFactor);
   }
 
   /**
@@ -193,6 +195,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     teleopLogging();
+    speedLimitFactor = SmartDashboard.getNumber("Speed Limit Factor", speedLimitFactor);
   }
 
   /**
