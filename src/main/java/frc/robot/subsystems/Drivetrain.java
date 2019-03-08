@@ -22,8 +22,8 @@ public class Drivetrain extends Subsystem {
 	}
 	
 	public void setSpeed(double left_speed, double right_speed) {
-		this.left_speed = left_speed * Robot.speedLimitFactor;
-		this.right_speed = right_speed * Robot.speedLimitFactor;
+		this.left_speed = left_speed;
+		this.right_speed = right_speed;
 		
 		RobotMap.left_motor_1.set(ControlMode.Velocity, this.left_speed);
 		RobotMap.right_motor_1.set(ControlMode.Velocity, -this.right_speed);
